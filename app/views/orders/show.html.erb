@@ -6,7 +6,7 @@
 
   <div class="order-summary jumbotron">
     <h4>The following order was placed to <%= @order.email %>!</h4>
-    
+        
     <div class="panel panel-default items">
       <table class="table table-bordered">
         <thead>
@@ -18,7 +18,9 @@
           </tr>
         </thead>
         <tbody>
-          
+          <% @order.line_items.each do |item| %>
+            <%= render 'item', product: Product.find(item.product_id), quantity: item.quantity %>
+          <% end %>
         </tbody>
         <tfoot>
           <tr>
