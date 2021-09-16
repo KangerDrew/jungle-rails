@@ -5,7 +5,8 @@
   </header>
 
   <div class="well">
-    <%= link_to '+ New Category', [:new, :admin, :category], class: 'btn btn-info' %>
+    <%= link_to '+ New Category', [:new, :admin, :category], class: 'btn btn-success' %>
   </div>
 
+  <%= render @categories %>
 </section>
