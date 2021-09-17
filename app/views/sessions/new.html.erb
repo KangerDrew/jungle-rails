@@ -1,15 +1,28 @@
 <section class="sessions-login">
 
   <header class="page-header">
-    <h1>Login!</h1>
+    <h1>Login</h1>
   </header>
 
-  <%= form_tag '/login' do %>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
+      <%= form_tag '/login' do %>
 
-    Email: <%= text_field_tag :email %>
-    Password: <%= password_field_tag :password %>
-    <%= submit_tag "Submit" %>
-  
-  <% end %>
+        <div class="form-group">
+          <%= label_tag "Email" %>
+          <br>
+          <%= text_field_tag :email %>
+        </div>
+        <div class="form-group">
+          <%= label_tag "Password" %>
+          <br>
+          <%= password_field_tag :password %>
+        </div>
+
+        <%= submit_tag "Login", class: 'btn btn-danger' %>
+      
+      <% end %>
+    </div>
+  </div>
 
 </section>
