@@ -17,5 +17,26 @@ RSpec.feature "AddToCarts", type: :feature, js: true do
     end
   end
 
+  scenario "There are 0 prudcts in cart when the page first renders" do
+
+    visit root_path
+
+    expect(page).to have_link 'My Cart (0)', href: '/cart'
+
+  end
+
+  scenario "1 prudct is added to cart when add button is clicked" do
+
+    visit root_path
+    save_screenshot
+
+    # Add the first product into cart
+    page.find('article', match: :first).find('footer form').click
+
+    expect(page).to have_link 'My Cart (1)', href: '/cart'
+    save_screenshot
+
+  end
+
 
 end
