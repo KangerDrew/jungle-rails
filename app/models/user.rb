@@ -8,7 +8,10 @@ class User < ActiveRecord::Base
 
   def self.authenticate_with_credentials(email, password)
     # .strip is to ensure that any leading or trailing space will be ignored
-    user = self.find_by_email(email.strip)
+    email_fixed = email.strip.downcase
+    # The .where method below compares the formatted email with an email
+    # in database that has ALSO been downcased.
+    user = self.where("LOWER(email) LIKE ?", email_fixed).first
     
     if user && user.authenticate(password)
       return user
