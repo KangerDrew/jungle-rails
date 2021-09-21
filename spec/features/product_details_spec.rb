@@ -16,14 +16,41 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     end
   end
 
-  scenario "Clicking on the image of product opens shows product detail page" do
+  scenario "Clicking on the image of product opens product detail page" do
+
+    visit root_path
+
+    #save_screenshot
+    # find image of the product and click
+    page.find('article', match: :first).find('header a img').click
+
+    expect(page).to have_css 'article.product-detail'
+    #save_screenshot
+
+  end
+
+  scenario "Clicking on the text of product opens product detail page" do
+
+    visit root_path
+
+    #save_screenshot
+    # find image of the product and click
+    page.find('article', match: :first).find('header a h4').click
+
+    expect(page).to have_css 'article.product-detail'
+    #save_screenshot
+
+  end
+
+  scenario "Clicking on the detail button of product opens product detail page" do
 
     visit root_path
 
     save_screenshot
     # find image of the product and click
-    page.find('article', match: :first).find('header a img').click
+    page.find('article', match: :first).find('footer a').click
 
+    expect(page).to have_css 'article.product-detail'
     save_screenshot
 
   end
